@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="ca.qc.cegep_heritage.mhaley_b51_mathexplosion.OptionsActivity">
+
+    <TextView
+        android:id="@+id/txtOptionsTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/options_label_marginStart"
+        android:layout_marginTop="16dp"
+        android:text="@string/options_button"
+        android:textAppearance="@android:style/TextAppearance.Material.Title"
+        android:textSize="36sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/txtOperatorLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/options_label_marginStart"
+        android:layout_marginTop="24dp"
+        android:text="@string/operator"
+        android:textAppearance="@android:style/TextAppearance.Material.Headline"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtOptionsTitle" />
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="156dp"
+        android:layout_marginTop="95dp"
+        android:orientation="vertical"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <CheckBox
+            android:id="@+id/chckbxAddition"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/operator_addition"
+            android:textSize="@dimen/options_checkbox_operator_textSize"
+            app:layout_constraintStart_toEndOf="@+id/txtOperatorLabel"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <CheckBox
+            android:id="@+id/chckbxSubtraction"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/operator_subtraction"
+            android:textSize="@dimen/options_checkbox_operator_textSize"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/chckbxAddition" />
+
+        <CheckBox
+            android:id="@+id/chckbxMultiplication"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/operator_multiplication"
+            android:textSize="@dimen/options_checkbox_operator_textSize"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/chckbxAddition" />
+
+        <CheckBox
+            android:id="@+id/chckbxDivision"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/operator_division"
+            android:textSize="@dimen/options_checkbox_operator_textSize"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/chckbxAddition" />
+
+        <CheckBox
+            android:id="@+id/chckbxAllOperators"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/all_operators"
+            android:textSize="@dimen/options_checkbox_operator_textSize"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/chckbxAddition" />
+    </LinearLayout>
+
+    <Spinner
+        android:id="@+id/spnnrDifficulty"
+        android:layout_width="178dp"
+        android:layout_height="30dp"
+        android:layout_marginStart="36dp"
+        android:layout_marginTop="12dp"
+        app:layout_constraintStart_toEndOf="@+id/txtDifficultyLabel"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
+
+    <TextView
+        android:id="@+id/txtDifficultyLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/options_label_marginStart"
+        android:layout_marginTop="148dp"
+        android:text="@string/difficulty"
+        android:textAppearance="@android:style/TextAppearance.Material.Headline"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtOperatorLabel" />
+
+    <TextView
+        android:id="@+id/txtOperationsLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/options_label_marginStart"
+        android:layout_marginTop="25dp"
+        android:text="@string/amount_of_operations"
+        android:textAppearance="@android:style/TextAppearance.Material.Headline"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtDifficultyLabel" />
+
+    <RadioGroup
+        android:id="@+id/rdogrpAmountOfOperations"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="28dp"
+        app:layout_constraintStart_toEndOf="@+id/txtOperationsLabel"
+        app:layout_constraintTop_toBottomOf="@+id/spnnrDifficulty">
+
+        <RadioButton
+            android:id="@+id/rdoSingleOperation"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/operations_amount_single"
+            android:textSize="@dimen/options_checkbox_operator_textSize" />
+
+        <RadioButton
+            android:id="@+id/rdoDoubleOperation"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/operations_amount_double"
+            android:textSize="@dimen/options_checkbox_operator_textSize" />
+    </RadioGroup>
+
+    <Button
+        android:id="@+id/btnSaveOptions"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="156dp"
+        android:layout_marginTop="36dp"
+        android:text="@string/save"
+        android:textSize="@dimen/options_checkbox_operator_textSize"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/rdogrpAmountOfOperations" />
+
+    <Button
+        android:id="@+id/btnCancelOptions"
+        style="@android:style/Widget.Material.Button.Borderless"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="36dp"
+        android:text="@string/cancel"
+        android:textSize="15sp"
+        app:layout_constraintStart_toEndOf="@+id/btnSaveOptions"
+        app:layout_constraintTop_toBottomOf="@+id/rdogrpAmountOfOperations" />
+
+
+</android.support.constraint.ConstraintLayout>

@@ -1,10 +1,32 @@
 <resources>
+    <!-- Global -->
     <string name="app_name">Math Explosion</string>
+
+    <!-- MainActivity -->
     <string name="action_settings">About</string>
     <string name="start_button">Play Game</string>
+
+    <!-- MainActivity & OptionsActivity -->
     <string name="options_button">Options</string>
-    <string name="operand_addition">+</string>
-    <string name="operand_subtraction">-</string>
-    <string name="operand_multiplication">x</string>
-    <string name="operand_division">÷</string>
+    <string name="operator">Operators:</string>
+    <string name="operator_addition">+</string>
+    <string name="operator_subtraction">-</string>
+    <string name="operator_multiplication">x</string>
+    <string name="operator_division">÷</string>
+
+    <!-- OptionsActivity -->
+    <string name="all_operators">All Operators</string>
+    <string name="difficulty">Difficulty:</string>
+    <string-array name="difficulty_options">
+        <item>I\'m too young to die</item>
+        <item>Hey, not too rough</item>
+        <item>Hurt me plenty</item>
+        <item>Ultra-Violence</item>
+        <item>NIGHTMARE!</item>
+    </string-array>
+    <string name="amount_of_operations">Operations:</string>
+    <string name="operations_amount_single">Single</string>
+    <string name="operations_amount_double">Double</string>
+    <string name="save">Save</string>
+    <string name="cancel">Cancel</string>
 </resources>
