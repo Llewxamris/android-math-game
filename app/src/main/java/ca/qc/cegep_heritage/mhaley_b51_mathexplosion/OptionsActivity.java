@@ -75,7 +75,7 @@ public class OptionsActivity extends AppCompatActivity {
         final RadioButton rdoSingleOperation = (RadioButton) findViewById(R.id.rdoSingleOperation);
         RadioButton rdoDoubleOperation = (RadioButton) findViewById(R.id.rdoDoubleOperation);
 
-        if (sharedPrefs.getInt("operations", 0) == 0) {
+        if (sharedPrefs.getInt("operations", 1) == 1) {
             rdoSingleOperation.setChecked(true);
         } else {
             rdoDoubleOperation.setChecked(true);
@@ -113,9 +113,9 @@ public class OptionsActivity extends AppCompatActivity {
                         .apply();
 
                 if (rdoSingleOperation.isChecked()) {
-                    sharedPrefs.edit().putInt("operations", 0).apply();
-                } else {
                     sharedPrefs.edit().putInt("operations", 1).apply();
+                } else {
+                    sharedPrefs.edit().putInt("operations", 2).apply();
                 }
 
                 Intent mainIntent = new Intent(OptionsActivity.this, MainActivity.class);

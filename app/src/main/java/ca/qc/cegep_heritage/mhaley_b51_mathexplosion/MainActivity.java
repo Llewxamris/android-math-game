@@ -26,11 +26,20 @@ public class MainActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
         Button btnOptions = (Button) findViewById(R.id.btnOptions);
-
         btnOptions.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 switchOptionsActivity();
+            }
+        });
+
+        Button btnStart = (Button) findViewById(R.id.btnStart);
+        btnStart.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent gameIntent = new Intent(MainActivity.this,
+                        GameActivity.class);
+                startActivity(gameIntent);
             }
         });
 
@@ -39,7 +48,7 @@ public class MainActivity extends AppCompatActivity {
         if(sharedPrefs.getInt("difficulty", -1) == -1) {
             sharedPrefs.edit().putString("operators", "+-").apply();
             sharedPrefs.edit().putInt("difficulty", 2).apply();
-            sharedPrefs.edit().putInt("operations", 0).apply();
+            sharedPrefs.edit().putInt("operations", 1).apply();
 
         }
 
