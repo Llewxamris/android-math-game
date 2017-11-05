@@ -9,17 +9,12 @@ public class Equation {
     private String equation;
     private int answer;
 
-    public Equation() {
-        equation = "n/a";
-        answer = -1;
-    }
-
-    public Equation(String eq) {
+    Equation(String eq) {
         equation = eq;
         answer = solveEquation();
     }
 
-    public String getEquation() {
+    String getEquation() {
         return equation;
     }
 
