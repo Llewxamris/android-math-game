@@ -29,4 +29,10 @@
     <string name="operations_amount_double">Double</string>
     <string name="save">Save</string>
     <string name="cancel">Cancel</string>
+
+    <!-- GameActivity -->
+    <string name="score">Score:</string>
+    <string name="starting_score">0</string>
+    <string name="lives">Lives:</string>
+    <string name="starting_lives">3</string>
 </resources>

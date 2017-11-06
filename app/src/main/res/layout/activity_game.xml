@@ -37,4 +37,48 @@
         android:text="Answer"
         app:layout_constraintStart_toEndOf="@+id/edtxtUserAnswer"
         app:layout_constraintTop_toBottomOf="@+id/txtEquation" />
+
+    <TextView
+        android:id="@+id/txtScoreLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="30dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:text="@string/score"
+        android:textAppearance="@android:style/TextAppearance.Material.Large"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/txtScore"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:text="@string/starting_score"
+        android:textAppearance="@android:style/TextAppearance.Material.Large"
+        app:layout_constraintStart_toEndOf="@+id/txtScoreLabel"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/txtLivesLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="224dp"
+        android:layout_marginTop="8dp"
+        android:text="@string/lives"
+        android:textAppearance="@android:style/TextAppearance.Material.Large"
+        app:layout_constraintStart_toEndOf="@+id/txtScore"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/txtLives"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:text="@string/starting_lives"
+        android:textAppearance="@android:style/TextAppearance.Material.Large"
+        app:layout_constraintStart_toEndOf="@+id/txtLivesLabel"
+        app:layout_constraintTop_toTopOf="parent" />
 </android.support.constraint.ConstraintLayout>
