@@ -47,16 +47,16 @@ public class Equation {
         if (equationArray.length != 3) {
             switch (equationArray[3]) {
                 case "+":
-                    solution += Integer.parseInt(equationArray[0]);
+                    solution += Integer.parseInt(equationArray[4]);
                     break;
                 case "-":
-                    solution -= Integer.parseInt(equationArray[0]);
+                    solution -= Integer.parseInt(equationArray[4]);
                     break;
                 case "*":
-                    solution *= Integer.parseInt(equationArray[0]);
+                    solution *= Integer.parseInt(equationArray[4]);
                     break;
                 case "/":
-                    solution /= Integer.parseInt(equationArray[0]);
+                    solution /= Integer.parseInt(equationArray[4]);
                     break;
             }
         }

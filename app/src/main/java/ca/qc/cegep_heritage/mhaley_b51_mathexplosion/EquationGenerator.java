@@ -23,7 +23,7 @@ final class EquationGenerator {
         StringBuilder equationStringBuilder = new StringBuilder("");
 
         for (int i = 0; i <= operations; i++) {
-            equationStringBuilder.append(randomNumberGenerator.nextInt(10 - 1 + 1));
+            equationStringBuilder.append(randomNumberGenerator.nextInt(10 + 1 - 1));
 
             equationStringBuilder.append(ops[randomNumberGenerator
                     .nextInt(ops.length)]);
