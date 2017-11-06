@@ -1,5 +1,7 @@
 package ca.qc.cegep_heritage.mhaley_b51_mathexplosion;
 
+import java.util.Arrays;
+
 /**
  * Created by max on 05/11/17.
  */
@@ -22,7 +24,44 @@ public class Equation {
         return userAnswer == answer;
     }
 
-    private static int solveEquation() {
-        return 0;
+    private int solveEquation() {
+        String[] equationArray = equation.split("");
+        equationArray = Arrays.copyOfRange(equationArray, 1, equationArray.length);
+
+        int solution = 0;
+
+        switch (equationArray[1]) {
+            case "+":
+                solution = Integer.parseInt(equationArray[0]) + Integer.parseInt(equationArray[2]);
+                break;
+            case "-":
+                solution = Integer.parseInt(equationArray[0]) - Integer.parseInt(equationArray[2]);
+                break;
+            case "*":
+                solution = Integer.parseInt(equationArray[0]) * Integer.parseInt(equationArray[2]);
+                break;
+            case "/":
+                solution = Integer.parseInt(equationArray[0]) / Integer.parseInt(equationArray[2]);
+                break;
+        }
+        if (equationArray.length != 3) {
+            switch (equationArray[3]) {
+                case "+":
+                    solution += Integer.parseInt(equationArray[0]);
+                    break;
+                case "-":
+                    solution -= Integer.parseInt(equationArray[0]);
+                    break;
+                case "*":
+                    solution *= Integer.parseInt(equationArray[0]);
+                    break;
+                case "/":
+                    solution /= Integer.parseInt(equationArray[0]);
+                    break;
+            }
+        }
+
+        return solution;
     }
 }
+
