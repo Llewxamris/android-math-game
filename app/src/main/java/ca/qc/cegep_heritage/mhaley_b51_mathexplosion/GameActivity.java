@@ -18,7 +18,7 @@ public class GameActivity extends AppCompatActivity {
     private int lives = 3;
     private long time;
     private int score = 0;
- 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
