@@ -1,6 +1,7 @@
 package ca.qc.cegep_heritage.mhaley_b51_mathexplosion;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -83,7 +84,8 @@ public class GameActivity extends AppCompatActivity {
         edtxtUserAnswer.setText("");
 
         if(lives == 0) {
-            // Lose condition
+            Intent gameOverIntent = new Intent(GameActivity.this, GameOverActivity.class);
+            startActivity(gameOverIntent);
         }
     }
 

@@ -35,4 +35,8 @@
     <string name="starting_score">0</string>
     <string name="lives">Lives:</string>
     <string name="starting_lives">3</string>
+
+    <!-- GameOverActivity -->
+    <string name="game_over">Game Over!</string>
+    <string name="taunt">Better luck next time.</string>
 </resources>
