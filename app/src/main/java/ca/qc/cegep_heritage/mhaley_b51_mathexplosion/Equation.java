@@ -20,7 +20,7 @@ public class Equation {
         return equation;
     }
 
-    public boolean checkIsAnswer(int userAnswer) {
+    boolean checkIsAnswer(int userAnswer) {
         return userAnswer == answer;
     }
 
