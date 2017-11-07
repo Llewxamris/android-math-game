@@ -62,16 +62,12 @@ public class GameActivity extends AppCompatActivity {
         timerHandler.postDelayed(timerRunnable, time);
         progressBarHandler.postDelayed(progressBarRunnable, 1000);
 
-
         Button btnAnswer = (Button) findViewById(R.id.btnAnswer);
         btnAnswer.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 EditText edtxtUserAnswer = (EditText) findViewById(R.id.edtxtUserAnswer);
                 if (equation.checkIsAnswer(Integer.parseInt(edtxtUserAnswer.getText().toString()))) {
-                    Toast toast = Toast
-                            .makeText(GameActivity.this, "Correct!", Toast.LENGTH_LONG);
-                    toast.show();
                     increaseScore();
                     timerHandler.removeCallbacks(timerRunnable);
                     timerHandler.postDelayed(timerRunnable, time);
@@ -88,6 +84,13 @@ public class GameActivity extends AppCompatActivity {
                         sharedPrefs.getInt("operations", 1));
             }
         });
+    }
+
+    @Override
+    public void onPause() {
+        timerHandler.removeCallbacks(timerRunnable);
+        progressBarHandler.removeCallbacks(progressBarRunnable);
+        super.onPause();
     }
 
     private void showNewEquation(String operators, int operations) {

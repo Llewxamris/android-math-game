@@ -13,6 +13,7 @@ import android.widget.CompoundButton;
 import android.widget.Spinner;
 import android.widget.CheckBox;
 import android.widget.RadioButton;
+import android.widget.Toast;
 
 public class OptionsActivity extends AppCompatActivity {
 
@@ -117,6 +118,10 @@ public class OptionsActivity extends AppCompatActivity {
                 } else {
                     sharedPrefs.edit().putInt("operations", 2).apply();
                 }
+
+                Toast toast = Toast
+                        .makeText(OptionsActivity.this, "Options Saved!", Toast.LENGTH_LONG);
+                toast.show();
 
                 Intent mainIntent = new Intent(OptionsActivity.this, MainActivity.class);
                 startActivity(mainIntent);
