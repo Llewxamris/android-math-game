@@ -5,20 +5,46 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.View;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
-//import java.util.Timer;
-//import java.util.TimerTask;
 
 public class GameActivity extends AppCompatActivity {
 
     private Equation equation;
     private int lives = 3;
     private long time;
+    private long currTime;
     private int score = 0;
+
+    Handler timerHandler = new Handler();
+    Runnable timerRunnable = new Runnable() {
+        @Override
+        public void run() {
+            loseLife();
+            SharedPreferences sharedPrefs = GameActivity.this.getSharedPreferences("options", Context.MODE_PRIVATE);
+            showNewEquation(sharedPrefs.getString("operators","+"),
+                    sharedPrefs.getInt("operations", 1));
+            currTime = time;
+            timerHandler.postDelayed(this, time);
+        }
+    };
+
+    Handler progressBarHandler = new Handler();
+    Runnable progressBarRunnable = new Runnable() {
+        @Override
+        public void run() {
+            ProgressBar progbarTimer = (ProgressBar) findViewById(R.id.progbarTimer);
+            progbarTimer.setMax((int) time);
+            progbarTimer.setProgress((int) currTime);
+            currTime -= 1000;
+            timerHandler.postDelayed(this, 1000);
+        }
+    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,11 +55,13 @@ public class GameActivity extends AppCompatActivity {
         showNewEquation(sharedPrefs.getString("operators","+"),
                 sharedPrefs.getInt("operations", 1));
         setTimer(sharedPrefs.getInt("difficulty", 2));
+        currTime = time;
+        ProgressBar progbarTimer = (ProgressBar) findViewById(R.id.progbarTimer);
+        progbarTimer.setMax((int) time);
+        progbarTimer.setProgress((int) currTime);
+        timerHandler.postDelayed(timerRunnable, time);
+        progressBarHandler.postDelayed(progressBarRunnable, 1000);
 
-//        TimerTask playerTookToLong = getTimerTask(sharedPrefs);
-//
-//        Timer countDownTimer = new Timer("countDownTimer");
-//        countDownTimer.schedule(playerTookToLong, time);
 
         Button btnAnswer = (Button) findViewById(R.id.btnAnswer);
         btnAnswer.setOnClickListener(new View.OnClickListener() {
@@ -45,8 +73,16 @@ public class GameActivity extends AppCompatActivity {
                             .makeText(GameActivity.this, "Correct!", Toast.LENGTH_LONG);
                     toast.show();
                     increaseScore();
+                    timerHandler.removeCallbacks(timerRunnable);
+                    timerHandler.postDelayed(timerRunnable, time);
+                    progressBarHandler.removeCallbacks(progressBarRunnable);
+                    progressBarHandler.postDelayed(progressBarRunnable, 1000);
                 } else {
                     loseLife();
+                    timerHandler.removeCallbacks(timerRunnable);
+                    timerHandler.postDelayed(timerRunnable, time);
+                    progressBarHandler.removeCallbacks(progressBarRunnable);
+                    progressBarHandler.postDelayed(progressBarRunnable, 1000);
                 }
                 showNewEquation(sharedPrefs.getString("operators","+"),
                         sharedPrefs.getInt("operations", 1));
@@ -84,23 +120,11 @@ public class GameActivity extends AppCompatActivity {
         edtxtUserAnswer.setText("");
 
         if(lives == 0) {
+            timerHandler.removeCallbacks(timerRunnable);
             Intent gameOverIntent = new Intent(GameActivity.this, GameOverActivity.class);
             startActivity(gameOverIntent);
         }
     }
-
-//    private TimerTask getTimerTask(SharedPreferences sharedPrefs) {
-//        return new TimerTask() {
-//            @Override
-//            public void run() {
-//                loseLife();
-//                showNewEquation(sharedPrefs.getString("operators","+"),
-//                        sharedPrefs.getInt("operations", 1));
-//                Timer countDownTimer = new Timer("countDownTimer");
-//                countDownTimer.schedule(getTimerTask(), time);
-//            }
-//        };
-//    }
 
     private void setTimer(int difficulty) {
         switch (difficulty) {
