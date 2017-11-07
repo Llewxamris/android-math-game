@@ -10,4 +10,7 @@
     <!-- OptionsActivity -->
     <dimen name="options_checkbox_operator_textSize">24sp</dimen>
     <dimen name="options_label_marginStart">16dp</dimen>
+
+    <!-- AboutActivity -->
+    <dimen name="about_text_marginTop">8dp</dimen>
 </resources>
