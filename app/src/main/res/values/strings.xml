@@ -39,4 +39,13 @@
     <!-- GameOverActivity -->
     <string name="game_over">Game Over!</string>
     <string name="taunt">Better luck next time.</string>
+
+    <!-- AboutActivity -->
+    <string name="about">About Math Explosion</string>
+    <string name="version_number">v1.0.0</string>
+    <string name="author_name">Maxwell Haley</string>
+    <string name="completion_date">November 7th, 2017</string>
+    <string name="course_name">Programming V</string>
+    <string name="course_number">420-B51</string>
+    <string name="game_description">Solve math equations while beating the timer!</string>
 </resources>
