@@ -11,7 +11,6 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Toast;
 
 public class GameActivity extends AppCompatActivity {
 
@@ -42,7 +41,7 @@ public class GameActivity extends AppCompatActivity {
             progbarTimer.setMax((int) time);
             progbarTimer.setProgress((int) currTime);
             currTime -= 1000;
-            timerHandler.postDelayed(this, 1000);
+            progressBarHandler.postDelayed(this, 1000);
         }
     };
 
@@ -69,16 +68,8 @@ public class GameActivity extends AppCompatActivity {
                 EditText edtxtUserAnswer = (EditText) findViewById(R.id.edtxtUserAnswer);
                 if (equation.checkIsAnswer(Integer.parseInt(edtxtUserAnswer.getText().toString()))) {
                     increaseScore();
-                    timerHandler.removeCallbacks(timerRunnable);
-                    timerHandler.postDelayed(timerRunnable, time);
-                    progressBarHandler.removeCallbacks(progressBarRunnable);
-                    progressBarHandler.postDelayed(progressBarRunnable, 1000);
                 } else {
                     loseLife();
-                    timerHandler.removeCallbacks(timerRunnable);
-                    timerHandler.postDelayed(timerRunnable, time);
-                    progressBarHandler.removeCallbacks(progressBarRunnable);
-                    progressBarHandler.postDelayed(progressBarRunnable, 1000);
                 }
                 showNewEquation(sharedPrefs.getString("operators","+"),
                         sharedPrefs.getInt("operations", 1));
@@ -112,6 +103,7 @@ public class GameActivity extends AppCompatActivity {
         if(score % 5 == 0) {
             time -= 5;
         }
+        resetHandlers();
     }
 
     private void loseLife() {
@@ -121,6 +113,8 @@ public class GameActivity extends AppCompatActivity {
 
         EditText edtxtUserAnswer = (EditText) findViewById(R.id.edtxtUserAnswer);
         edtxtUserAnswer.setText("");
+
+        resetHandlers();
 
         if(lives == 0) {
             timerHandler.removeCallbacks(timerRunnable);
@@ -150,5 +144,17 @@ public class GameActivity extends AppCompatActivity {
                 time = 30000;
                 break;
         }
+    }
+
+    private void resetHandlers() {
+        currTime = time;
+        ProgressBar progbarTimer = (ProgressBar) findViewById(R.id.progbarTimer);
+        progbarTimer.setMax((int) time);
+        progbarTimer.setProgress((int) currTime);
+
+        timerHandler.removeCallbacks(timerRunnable);
+        timerHandler.postDelayed(timerRunnable, time);
+        progressBarHandler.removeCallbacks(progressBarRunnable);
+        progressBarHandler.postDelayed(progressBarRunnable, 1000);
     }
 }
